@@ -1,16 +1,36 @@
+# Course Assignment 1
 [![Build Status](https://travis-ci.org/Jean-Poul/3semCourseAssignment1.svg?branch=master)](https://travis-ci.org/Jean-Poul/3semCourseAssignment1)
+## Project deployed on droplet below:
+[micklarsen.com/CA1](https://micklarsen.com/CA1/)
 
-*This project is meant as start code for projects and exercises given in Flow-1+2 at http://cphbusiness.dk in the Study Program "AP degree in Computer Science".*
+## Members of Class E, Group 8:
+  ### Jean-Poul Wilhelm Luplau Leth-Møller [Github](https://github.com/AlexanderPihl)
+  ### Morten Rahbek Rasmussen [GitHub](https://github.com/Amazingh0rse)
+  ### Mick Kristian Strellner Larsen [GitHub](https://github.com/MivleDK)
+  ### Per Kringelbach [Github](https://github.com/cph-pk)
+  ### Alexander Pihl [Github](https://github.com/AlexanderPihl)
+#
 
-*Projects which are expected to use this start-code are projects that require all, or most of the following technologies:*
- - *JPA and REST*
-- *Testing, including database test*
-- *Testing, including tests of REST-API's*
-- *CI and CONTINUOUS DELIVERY*
+## Daily Log:
+### **Monday**
+- Introduction from teacher to Course Assigment 1.
+- Initial setup:
+  - Github repository
+  - Travis integration
+  - Trying to setup access to droplet for everyone. Not solved that day due to public keys denied for everyone except droplet owner.
+### **Tuesday**
+- Making sure everybody has a working start project and are able to push to github and deploy through travis. Which was more difficult then it sounds because of issues with travis not deplying and the project not building for everyone in the group. Eventually it worked out.
+- Project classes structure setup.
+  - members entity
+  - members DTO
+  - joke entity
+  - jokes DTO
+  - cars entity
+  - cars DTO
+- index.html design setup.
+- README file setup.
+### **Wensday**
+### **Thursday**
+### **Friday**
+#
 
-### Preconditions
-*In order to use this code, you should have a local developer setup + a "matching" droplet on Digital Ocean as described in the 3. semester guidelines* 
-# Getting Started
-
-This document explains how to use this code (build, test and deploy), locally with maven, and remotely with maven controlled by Travis
- - [How to use](https://docs.google.com/document/d/1K6s6Tt65bzB8bCSE_NUE8alJrLRNTKCwax3GEm4OjOE/edit?usp=sharing)
