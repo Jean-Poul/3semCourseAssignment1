@@ -1,0 +1,32 @@
+/* 
+    Created on : 15-09-2020, 20:48:42
+    Author     : DAT3SEM E, GRP 8
+    Comment:     This stylesheet should only be used to overrule or add to the existing bootstrap setup!
+*/
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'PT Sans', sans-serif;
+}
+
+/*.min-100{
+    min-height: 100vh;
+}
+
+.vert-align{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text-vert-mid{
+    padding-top: 50%;
+}*/
+
+.grad-bg{
+    background: -moz-linear-gradient(45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+    background: linear-gradient(to 45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+}
