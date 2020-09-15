@@ -1,14 +1,14 @@
-# Course Assignment 1
-[![Build Status](https://travis-ci.org/Jean-Poul/3semCourseAssignment1.svg?branch=master)](https://travis-ci.org/Jean-Poul/3semCourseAssignment1)
+# [Course Assignment 1](https://docs.google.com/document/d/1XT94iw0TpKjK2c1hXhCj8wPPOwogTVME0hsONbEf4F4/edit) [![Build Status](https://travis-ci.org/Jean-Poul/3semCourseAssignment1.svg?branch=master)](https://travis-ci.org/Jean-Poul/3semCourseAssignment1)
+
 ## Project deployed on droplet below:
 [micklarsen.com/CA1](https://micklarsen.com/CA1/)
 
 ## Members of Class E, Group 8:
-  ### Jean-Poul Wilhelm Luplau Leth-Møller [Github](https://github.com/AlexanderPihl)
-  ### Morten Rahbek Rasmussen [GitHub](https://github.com/Amazingh0rse)
-  ### Mick Kristian Strellner Larsen [GitHub](https://github.com/MivleDK)
-  ### Per Kringelbach [Github](https://github.com/cph-pk)
-  ### Alexander Pihl [Github](https://github.com/AlexanderPihl)
+  #### Jean-Poul Wilhelm Luplau Leth-Møller [Github](https://github.com/AlexanderPihl)
+  #### Morten Rahbek Rasmussen [GitHub](https://github.com/Amazingh0rse)
+  #### Mick Kristian Strellner Larsen [GitHub](https://github.com/MivleDK)
+  #### Per Kringelbach [Github](https://github.com/cph-pk)
+  #### Alexander Pihl [Github](https://github.com/AlexanderPihl)
 #
 
 ## Daily Log:
@@ -32,5 +32,6 @@
 ### **Wensday**
 ### **Thursday**
 ### **Friday**
-#
+
+
 
