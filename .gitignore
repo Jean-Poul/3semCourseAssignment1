@@ -538,5 +538,6 @@ MigrationBackup/
 
 # Netbeans target folder
 .target/
+target/
 
 # End of https://www.toptal.com/developers/gitignore/api/netbeans,windows,macos,visualstudio,visualstudiocode,intellij
