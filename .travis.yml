@@ -7,8 +7,13 @@ dist: bionic
 language: java
 
 cache:
-  directories:  
+  directories:
     - $HOME/.m2
+
+    # safelist
+branches:
+  only:
+  - master
 
 script:
   - mvn test
