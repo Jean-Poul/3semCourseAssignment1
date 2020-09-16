@@ -15,6 +15,8 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.not;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -93,17 +95,6 @@ public class MemberResourceTest {
                 .statusCode(200);
     }
 
-    //This test assumes the database contains two rows
-//    @Test
-//    public void testDummyMsg() throws Exception {
-//        given()
-//                .contentType("application/json")
-//                .get("/member/").then()
-//                .assertThat()
-//                .statusCode(HttpStatus.OK_200.getStatusCode())
-//                .body("msg", equalTo("Hello World"));
-//    }
-
     // Test for groupmember count
     @Test
     public void testCount() throws Exception {
@@ -131,4 +122,28 @@ public class MemberResourceTest {
                         "Per Kringelbach",
                         "Morten Rasmussen"));
     }
+    
+    // Test to see if studentId matches with cph-as509
+    @Test
+    public void testFindByStudentId() {
+        given().
+                get("/groupmembers/" + m2.getStudentId())
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("studentId", hasItems("cph-as509"));
+    }
+
+
+    // Testing to see if a studentId does not contain a specific studentId
+    @Test
+    public void testFindByTitleNotFound() {
+        given().
+                get("/groupmembers/cph-ml616")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("studentId", not(hasItem("cph-jl360")));
+    }
+
 }

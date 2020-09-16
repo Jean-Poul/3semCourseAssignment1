@@ -64,6 +64,19 @@ public class MemberFacade {
         return memberDTOs;
     }
 
+    // Get groupmember by studentId
+    public List<MemberDTO> getStudentId(String studentId) {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m WHERE m.studentId LIKE :studentId", Member.class);
+        query.setParameter("studentId", "%" + studentId + "%");
+        List<Member> members = query.getResultList();
+        List<MemberDTO> memberDTOs = new ArrayList();
+        members.forEach((Member member) -> {
+            memberDTOs.add(new MemberDTO(member));
+        });
+        return memberDTOs;
+    }
+
     // Inserting to database
     public static void main(String[] args) {
         //Create emf pointing to the dev-database

@@ -7,6 +7,7 @@ import facades.MemberFacade;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -32,19 +33,29 @@ public class MemberResource {
         return "{\"msg\":\"Hello World\"}";
     }
 
+    // Count REST endpoint
     @Path("count")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getMemberCount() {
         long count = FACADE.getCount();
-        //System.out.println("--------------->"+count);
         return "{\"count\":" + count + "}";  //Done manually so no need for a DTO
     }
-    
+
+    // All REST endpoint
     @Path("all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getAll() {
         return Response.ok().entity(GSON.toJson(FACADE.getAllMembers())).build();
     }
+
+    // StudentId REST endpoint
+    @Path("/{studentId}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getByStudentId(@PathParam("studentId") String studentId) {
+        return Response.ok().entity(GSON.toJson(FACADE.getStudentId(studentId))).build();
+    }
+    
 }
