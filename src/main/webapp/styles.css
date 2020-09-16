@@ -8,6 +8,10 @@
 body{
     font-family: 'PT Sans', sans-serif;
     background-color: #000;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.95),rgba(0, 0, 0, 0.95)), url('img/bgcode.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat-y;        
 }
 
 .navbar-nav > li > .dropdown-menu{ 
@@ -18,8 +22,6 @@ body{
     color: #858585;  
 }
 
-
-
 .hero {
     width: 100%;
     height: 100vh;
@@ -27,11 +29,27 @@ body{
     justify-content: center;
     text-align: center;
     color: white;
-    background-image: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.9)), url('img/bgcode.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+}
+
+.jokes{
+    margin-top: 70px !important;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.joke-field{
+    width: 40vw;
+    margin-top: 10%;
+    background-color: #212529;
+    color: white;
+    text-align: left;
+    padding: 1.2em;
+    border: 1px solid #212529;
+    border-radius: 5px;
 }
 
 .contract{
@@ -39,6 +57,17 @@ body{
     text-align: left;
     line-height: 1.5em;
     padding: -56px; /*Subtracting bootstrap navbar height*/
+}
+
+.cars{
+    margin-top: 70px !important;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;
+    color: white;
 }
 
 .contract ol{
@@ -136,4 +165,24 @@ body{
 
 .cardlink:hover{
     text-decoration: none !important;
+}
+
+.sub-title{
+    font-size: 0.8em;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    line-height: 0px;
+}
+
+.sub-title a{
+    text-decoration: underline;
+    color: white;
+}
+
+.sub-title a:hover{
+    text-decoration: none;
+}
+
+.card-text{
+    font-size: 0.85em;
 }
