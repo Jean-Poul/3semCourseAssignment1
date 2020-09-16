@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Dynamic UI manipulation using data obtained via fetch</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+
+            <div><input type="button" id="random" value="Random joke"> (press "r" to refresh)</div>
+
+            <div><select id="categories"></select></div>
+
+            <div id="joke"></div>
+
+            <input type="text" id="searchjoke" name="searshjoke">
+            <input type="button" id="getjoke" value="Search joke">
+
+            <p id="message"></p>
+
+            <table class="table" id="searchresult"></table>
+        </div>
+        <script>
+
+            let random = document.getElementById("random");
+            let categories = document.getElementById("categories");
+            let getjoke = document.getElementById("getjoke");
+            let url = "https://api.chucknorris.io/jokes/";
+
+
+            let newcaturl = url + "categories";
+
+            // fetch all categories for selectbox
+            fetch(newcaturl)
+                    .then(res => res.json()) //in flow1, just do it
+                    .then(data => {
+
+                        var randombycat = "<option selected disabled>Random joke from category</option>";
+                        for (var i = 0; i < data.length; i++) {
+                            randombycat += "<option value=" + data[i] + ">" + data[i] + "</option>";
+                        }
+
+                        document.getElementById("categories").innerHTML = randombycat;
+
+                        //console.log("data", data);
+
+                    });
+
+
+            // fetch a random joke
+            random.onclick = function (e) {
+                e.preventDefault();
+
+                let newurl = url + "random";
+                document.getElementById("categories").selectedIndex = 0; // reset selectbox
+                document.getElementById("searchresult").innerHTML = ""; // reset search result div
+                document.getElementById("message").innerHTML = ""; // reset message
+
+                fetch(newurl)
+                        .then(res => res.json()) //in flow1, just do it
+                        .then(data => {
+
+                            document.getElementById("joke").innerHTML = "<div><img src=" + data.icon_url + " alt=\"chuck norris avatar\"> Random joke</div><p>" +
+                                    data.value + "</p>";
+
+                            //console.log("data", data);
+
+                        });
+            };
+
+
+            // fetch random joke from category
+            categories.onchange = function (e) {
+                e.preventDefault();
+
+                let catvalue = document.getElementById("categories").value;
+                let newurl = url + "random?category=" + catvalue;
+
+                if (catvalue !== "Random joke from category") {
+                    document.getElementById("searchresult").innerHTML = ""; // reset search result div
+                    document.getElementById("message").innerHTML = ""; // reset message
+
+                    fetch(newurl)
+                            .then(res => res.json()) //in flow1, just do it
+                            .then(data => {
+
+                                document.getElementById("joke").innerHTML = "<div><img src=" + data.icon_url +
+                                        " alt=\"chuck norris avatar\"> Random joke from category " + data.categories + "</div><p>" +
+                                        data.value + "</p>";
+
+                                //console.log("data", data);
+
+                            });
+
+                    console.log(catvalue);
+                }
+            };
+
+
+            // fetch random joke by keypress 'r' on keybord
+            document.body.onkeydown = function (evt) {
+                evt = evt || window.event;
+                var target = evt.target || evt.srcElement;
+                var targetTagName = (target.nodeType === 1) ? target.nodeName.toUpperCase() : "";
+                if (!/INPUT|TEXTAREA/.test(targetTagName)) {
+                    if (evt.keyCode === 82) {
+                        document.getElementById("searchresult").innerHTML = ""; // reset search result div
+                        document.getElementById("message").innerHTML = ""; // reset message
+
+                        let newurl = url + "random";
+
+                        fetch(newurl)
+                                .then(res => res.json()) //in flow1, just do it
+                                .then(data => {
+
+                                    document.getElementById("joke").innerHTML = "<div><img src=" + data.icon_url + " alt=\"chuck norris avatar\"> Random joke</div><p>" +
+                                            data.value + "</p>";
+
+                                    document.getElementById("categories").selectedIndex = 0; // reset selectbox
+
+                                });
+                        //console.log("data", data);
+                        //console.log(String.fromCharCode(e.keyCode) + " --> " + e.keyCode);
+                    }
+                }
+            };
+
+            // fetch joke by search
+            getjoke.onclick = function (e) {
+                e.preventDefault();
+
+                let searchjoke = document.getElementById("searchjoke").value;
+
+                if (searchjoke.length < 3 || searchjoke.legth > 120) {
+                    document.getElementById("message").innerHTML = "Has to be between 3 and 120 letters";
+                } else if (!isNaN(searchjoke) && searchjoke.length > 1) {
+                    document.getElementById("message").innerHTML = "You need more than numbers";
+                } else {
+                    let newurl = url + "search?query=" + searchjoke;
+                    document.getElementById("categories").selectedIndex = 0; // reset selectbox
+                    document.getElementById("joke").innerHTML = ""; // reset joke div
+                    document.getElementById("message").innerHTML = ""; // reset message
+
+                    fetch(newurl)
+                            .then(res => res.json()) //in flow1, just do it
+                            .then(data => {
+
+                                var searchresult = "<thead><tr><th><div><img src=" + data.result[0].icon_url + " alt=\"chuck norris avatar\"></th><th>" + data.total + " jokes containing the word " + searchjoke + "</th></thead><tbody>";
+                                for (var i = 0; i < data.result.length; i++) {
+                                    var count = i + 1;
+                                    searchresult += "<tr><td>" + count + "</td><td>" + data.result[i].value + "</td></tr>";
+                                }
+                                searchresult += "</tbody>";
+
+                                document.getElementById("searchresult").innerHTML = searchresult;
+
+
+                                console.log("data", data);
+
+                            });
+                }
+            };
+
+        </script>
+    </body>
+</html>
+
