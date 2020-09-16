@@ -6,8 +6,10 @@ import facades.JokeFacade;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import utils.EMF_Creator;
 
 /**
@@ -39,4 +41,19 @@ public class JokeResource {
         return "{\"count\":" + count + "}";  //Done manually so no need for a DTO
     }
     
+    // All REST endpoint
+    @Path("all")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAll() {
+        return Response.ok().entity(GSON.toJson(FACADE.getAllJokes())).build();
+    }
+
+    // id REST endpoint
+    @Path("/{id}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getById(@PathParam("id") long id) {
+        return Response.ok().entity(GSON.toJson(FACADE.getJokeId(id))).build();
+    }
 }

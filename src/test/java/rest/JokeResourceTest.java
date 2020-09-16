@@ -32,7 +32,7 @@ public class JokeResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static Joke r1, r2;
+    private static Joke m1, m2, m3;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -65,17 +65,19 @@ public class JokeResourceTest {
     }
 
     // Setup the DataBase (used by the test-server and this test) in a known state BEFORE EACH TEST
-    //TODO -- Make sure to change the EntityClass used below to use YOUR OWN (renamed) Entity class
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        r1 = new Joke("joke", "reference", "type");
-        r2 = new Joke("jokee", "referencee", "typee");
+        m1 = new Joke("When Chuck Norris gets fast food, his order is ready before he walks in.","https://api.chucknorris.io/","Chuck Norris");
+        m2 = new Joke("Chuck Norris doesnt have to shave, his beard shaves itself.","https://api.chucknorris.io/","Chuck Norris");
+        m3 = new Joke("Chuck Norris can whistle in sign language.","https://api.chucknorris.io/","Chuck Norris");
+        
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
-            em.persist(r1);
-            em.persist(r2);
+            em.persist(m1);
+            em.persist(m2);
+            em.persist(m3);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -99,6 +101,7 @@ public class JokeResourceTest {
                 .body("msg", equalTo("Hello World"));
     }
 
+    // test for joke count
     @Test
     public void testCount() throws Exception {
         given()
@@ -106,6 +109,6 @@ public class JokeResourceTest {
                 .get("/joke/count").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("count", equalTo(2));
+                .body("count", equalTo(3));
     }
 }

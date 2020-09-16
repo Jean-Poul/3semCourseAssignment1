@@ -1,13 +1,16 @@
 package facades;
 
+import dto.JokeDTO;
 import entities.Joke;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utils.EMF_Creator;
 
@@ -21,6 +24,7 @@ public class JokeFacadeTest {
 
     private static EntityManagerFactory emf;
     private static JokeFacade facade;
+    private static Joke m1, m2, m3;
 
     public JokeFacadeTest() {
     }
@@ -37,16 +41,17 @@ public class JokeFacadeTest {
     }
 
     // Setup the DataBase in a known state BEFORE EACH TEST
-    //TODO -- Make sure to change the script below to use YOUR OWN entity class
-    @BeforeEach
-    public void setUp() {
+     public void setUp() {
         EntityManager em = emf.createEntityManager();
+        m1 = new Joke("When Chuck Norris gets fast food, his order is ready before he walks in.", "https://api.chucknorris.io/", "Chuck Norris");
+        m2 = new Joke("Chuck Norris doesnt have to shave, his beard shaves itself.", "https://api.chucknorris.io/", "Chuck Norris");
+        m3 = new Joke("Chuck Norris can whistle in sign language.", "https://api.chucknorris.io/", "Chuck Norris");
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
-            em.persist(new Joke("joke", "reference", "type"));
-            em.persist(new Joke("jokee", "referencee", "typee"));
-
+            em.persist(m1);
+            em.persist(m2);
+            em.persist(m3);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -61,7 +66,27 @@ public class JokeFacadeTest {
     // TODO: Delete or change this method 
     @Test
     public void testAFacadeMethod() {
-        assertEquals(2, facade.getCount(), "Expects two rows in the database");
+        assertEquals(3, facade.getCount(), "Expects tree rows in the database");
+    }
+    
+    // Testing to see if all jokes has been insertet to the database
+    @Test
+    public void testGetAllJokes() {
+        List<JokeDTO> joke = facade.getAllJokes();
+        assertThat(joke, hasSize(3));
     }
 
+    //  Testing to see if a List with JokeDTO has a joke with Id 2
+    @Test
+    public void testGetJokeById() {
+        List<JokeDTO> joke = facade.getJokeId(m2.getId());
+        assertEquals("2", joke.get(0).getId());
+    }
+    
+    // Testing to see if joke id 3 contains the right joke
+    @Test
+    public void getJokeByJoke() {
+        List<JokeDTO> joke = facade.getJokeId(m3.getId());
+        assertEquals("Chuck Norris can whistle in sign language.", joke.get(0).getJoke());
+    }
 }
