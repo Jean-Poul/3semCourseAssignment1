@@ -8,89 +8,149 @@
     </head>
     <body>
 
-        <!-- TO ALIGN VERTICAL AND HORISONTAL CENTER
-        <div class="col-6 justify-content-center  d-flex align-items-center text-white"> 
-        -->
-
-        <div class="container-fluid">
-
-            <section id="main" class="d-flex align-items-center position-relative vh-100 grad-bg">
-                <div class="container-fluid container-fluid-max">
-                    <div class="row">
-                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                            <h1 class="text-white ml-5">DAT3SEM</h1>
-                            <h2 class="text-white ml-5">Hold E, Gruppe 8</h2>
-
-                            <table class="table table-dark">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Student ID</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Favorite TV-Series</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">..</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">..</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">..</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">..</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">..</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                    </tr>                                    
-                                </tbody>
-                            </table>                            
-
-                            <div class="mt-3">
-                                <a class="btn btn-light mr-2 btn-lg" href="" role="button">KLIK NU PÅ MIG</a>
-                            </div> 
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">HOME</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Links section
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="whodidwhat.html">Who did what?</a>
+                            <a class="dropdown-item" href="groupcontract.html">Group contract</a>
+                            <a class="dropdown-item" href="jokes.html">Cool jokes API</a>
+                            <a class="dropdown-item" href="carsforsale.html">Cars for sale</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://github.com/Jean-Poul/3semCourseAssignment1">Github Repo &#8599</a>
                         </div>
-                    </div>
+                    </li>
                 </div>
-            </section>            
+            </div>
+        </nav>  
 
-        </div>        
+        <section class="hero">
+            <div class="hero-inner">
+                <h1>HOLD E, Gruppe 8</h1>
+                <h2>DAT3SEM, 2020</h2>
+                <table class="table table-striped table-dark mt-5 member-table">
+                    <thead>
+                        <tr>
+                            <th class="t-col t-col-1">Student ID</th>
+                            <th class="t-col t-col-2">Name</th>
+                            <th class="t-col t-col-3">Favorite TV-Series</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <td class="left-col">Navn Navnesen</td>
+                            <td class="left-col">Huset på Christianshavn</td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td class="left-col">Navn Navnesen</td>
+                            <td class="left-col">Huset på Christianshavn</td>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <td class="left-col">Navn Navnesen</td>
+                            <td class="left-col">Huset på Christianshavn</td>
+                        </tr>
+                    </tbody>
+                </table>                            
+                <a href="#" class="btn">Reload Names</a>
+                <div class="hero-bottom">
+                    <p class="text-white">But wait! There's more!</p>
+                    <span class="arrow-down">&darr;</span>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-3">
+                    <div class="text-white bg-dark mb-3" style="max-width: 18rem;">
+                        <a href="whodidwhat.html" class="cardlink">
+                            <div class="card-body">
+                                <h5 class="card-title">Who did what?</h5>
+                                <p class="card-text">Five man group? <br>Top-notch job! Have a look!</p>
+                            </div>
+                        </a>
+                    </div>            
+                </div>
+                <div class="col-3">
+                    <div class="text-white bg-dark mb-3" style="max-width: 18rem;">
+                        <a href="groupcontract.html" class="cardlink">
+                            <div class="card-body">
+                                <h5 class="card-title">Group contract</h5>
+                                <p class="card-text">Laying down the law<br>Git is good, git is god <3</p>
+                            </div>
+                        </a>
+                    </div>            
+                </div>
+                <div class="col-3">
+                    <div class="text-white bg-dark mb-3" style="max-width: 18rem;">
+                        <a href="jokes.html" class="cardlink">
+                            <div class="card-body">
+                                <h5 class="card-title">Cool jokes API</h5>
+                                <p class="card-text">2 devs walk into a bar<br>Must've hurt...</p>
+                            </div>
+                        </a>
+                    </div>            
+                </div>
+                <div class="col-3">
+                    <div class="text-white bg-dark mb-3" style="max-width: 18rem;">
+                        <a href="carsforsale.html" class="cardlink">
+                            <div class="card-body">
+                                <h5 class="card-title">Cars for sale</h5>
+                                <p class="card-text">Tesla < Lada<br>Check out the selection</p>
+                            </div>
+                        </a>
+                    </div>            
+                </div>                
+            </div>
+            <div class="row">
+                <div class="mx-auto">
+                    <div class="text-white bg-dark mb-3 mt-3" style="max-width: 18rem;">
+                        <a href="https://github.com/Jean-Poul/3semCourseAssignment1" class="cardlink">
+                            <div class="card-body">
+                                <h5 class="card-title">Source?</h5>
+                                <p class="card-text">Grab some coffee and knock yourself out</p>
+                            </div>
+                        </a>
+                    </div>            
+                </div>
+            </div>            
 
-        <h1>Class E: Gruppe 8</h1>
-        <h2>Gruppekontrakt</h2>
-        <ol>
-            <li>Everything is in english - comments too!</li>
-            <li>Atomic pushes only
-                <ul>
-                    <li>Notify others when making a push</li>
-                </ul>
-            </li>
-            <li>We will follow regular class scheduled hours - work beyond that is permitted (Refer to rule #2)
-                <ul>
-                    <li>Monday: 1300-1630</li>
-                    <li>Tuesday: 0900-1230</li>
-                    <li>Wednesday: 1300-1630</li>
-                    <li>Thursday: 0900-1230</li>
-                    <li>Friday: 0900-1630</li>
-                </ul>
-            </li>
-            <li>New features must be made on unique branches and reviewed by the group before merging with master</li>
-        </ol>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+            <div>        <h1>Class E: Gruppe 8</h1>
+                <h2>Gruppekontrakt</h2>
+                <ol>
+                    <li>Everything is in english - comments too!</li>
+                    <li>Atomic pushes only
+                        <ul>
+                            <li>Notify others when making a push</li>
+                        </ul>
+                    </li>
+                    <li>We will follow regular class scheduled hours - work beyond that is permitted (Refer to rule #2)
+                        <ul>
+                            <li>Monday: 1300-1630</li>
+                            <li>Tuesday: 0900-1230</li>
+                            <li>Wednesday: 1300-1630</li>
+                            <li>Thursday: 0900-1230</li>
+                            <li>Friday: 0900-1630</li>
+                        </ul>
+                    </li>
+                    <li>Comment your code or feel the banhammer!</li>
+                    <li>New features must be made on unique branches and reviewed by the group before merging with master</li>
+                </ol>
+            </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
     </body>
 </html>
