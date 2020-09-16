@@ -17,7 +17,10 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.not;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -111,4 +114,41 @@ public class JokeResourceTest {
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("count", equalTo(3));
     }
+    
+    // Test for all jokes
+    @Test
+    public void testGetAll() {
+
+        given()
+                .contentType("application/json")
+                .get("/joke/all")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("joke", hasItems("When Chuck Norris gets fast food, his order is ready before he walks in.",
+                        "Chuck Norris doesnt have to shave, his beard shaves itself.",
+                        "Chuck Norris can whistle in sign language."));
+    }
+    
+//    // Test to see if id matches with joke
+//    @Test
+//    public void testFindById() {
+//        given().
+//                get("/joke/" + m2.getId())
+//                .then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("id", hasItem(m2.getId()));
+//    }
+//    
+//    // Testing to see if a id does not contain a specific id
+//    @Test
+//    public void testFindByIdNotFound() {
+//        given().
+//                get("/joke/" + m1.getJoke())
+//                .then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("id", not(hasItem(4)));
+//    }
 }

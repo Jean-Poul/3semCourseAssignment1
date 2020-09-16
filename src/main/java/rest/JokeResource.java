@@ -54,6 +54,6 @@ public class JokeResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getById(@PathParam("id") long id) {
-        return Response.ok().entity(GSON.toJson(FACADE.getJokeId(id))).build();
+        return Response.ok().entity(GSON.toJson(FACADE.getJokeById(id))).build();
     }
 }

@@ -67,19 +67,13 @@ public class JokeFacade {
         return jokeDTOs;
     }
     
-    
-    // Get joke by id
-    public List<JokeDTO> getJokeId(long id) {
+     // Get joke by id
+    public JokeDTO getJokeById(long id) {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Joke> query = em.createQuery("SELECT j FROM Joke j WHERE j.id LIKE :id", Joke.class);
-        query.setParameter("id", "%" + id + "%");
-        List<Joke> jokes = query.getResultList();
-        List<JokeDTO> jokeDTOs = new ArrayList();
-        jokes.forEach((Joke joke) -> {
-            jokeDTOs.add(new JokeDTO(joke));
-        });
-        return jokeDTOs;
+        Joke j = em.find(Joke.class, id);
+        return new JokeDTO(j);
     }
+    
     
      // Inserting to database
     public static void main(String[] args) {
