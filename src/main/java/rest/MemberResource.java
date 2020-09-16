@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -39,4 +40,11 @@ public class MemberResource {
         //System.out.println("--------------->"+count);
         return "{\"count\":" + count + "}";  //Done manually so no need for a DTO
     }
+    
+//    @Path("all")
+//    @GET
+//    @Produces({MediaType.APPLICATION_JSON})
+//    public Response getAll() {
+//        return Response.ok().entity(GSON.toJson(FACADE.getAllMembers())).build();
+//    }
 }

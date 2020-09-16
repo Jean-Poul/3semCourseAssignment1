@@ -17,45 +17,22 @@ public class Member implements Serializable {
     // Private variables
     private Long id;
     private int age;
-    private String firstName;
-    private String lastName;
-    private String educaton;
+    private String studentId;
+    private String name;
+    private String[] favoriteShows;
+    private String favoriteCodingLanguage;
 
     // Empty constructor
     public Member() {
     }
 
-    // TODO, delete this class, or rename to an Entity class that makes sense for what you are about to do
-    // Delete EVERYTHING below if you decide to use this class, it's dummy data used for the initial demo
-//    private String dummyStr1;
-//    private String dummyStr2;
-//
-//    public Member(String dummyStr1, String dummyStr2) {
-//        this.dummyStr1 = dummyStr1;
-//        this.dummyStr2 = dummyStr2;
-//    }
-//
-//    public String getDummyStr1() {
-//        return dummyStr1;
-//    }
-//
-//    public void setDummyStr1(String dummyStr1) {
-//        this.dummyStr1 = dummyStr1;
-//    }
-//
-//    public String getDummyStr2() {
-//        return dummyStr2;
-//    }
-//
-//    public void setDummyStr2(String dummyStr2) {
-//        this.dummyStr2 = dummyStr2;
-//    }
     // All variables constructor
-    public Member(int age, String firstName, String lastName, String educaton) {
+    public Member(int age, String studentId, String name, String[] favoriteShows, String favoriteCodingLanguage) {
         this.age = age;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.educaton = educaton;
+        this.studentId = studentId;
+        this.name = name;
+        this.favoriteShows = favoriteShows;
+        this.favoriteCodingLanguage = favoriteCodingLanguage;
     }
 
     // Getters and setters
@@ -75,28 +52,36 @@ public class Member implements Serializable {
         this.age = age;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getName() {
+        return name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEducaton() {
-        return educaton;
+    public String[] getFavoriteShows() {
+        return favoriteShows;
     }
 
-    public void setEducaton(String educaton) {
-        this.educaton = educaton;
+    public void setFavoriteShows(String[] favoriteShows) {
+        this.favoriteShows = favoriteShows;
+    }
+
+    public String getFavoriteCodingLanguage() {
+        return favoriteCodingLanguage;
+    }
+
+    public void setFavoriteCodingLanguage(String favoriteCodingLanguage) {
+        this.favoriteCodingLanguage = favoriteCodingLanguage;
     }
 
 }

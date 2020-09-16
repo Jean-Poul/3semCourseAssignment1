@@ -14,11 +14,9 @@ import entities.Member;
 public class MemberDTO {
 
     // Private variables
-    private Long id;
-    private int age;
-    private String firstName;
-    private String lastName;
-    private String educaton;
+    private String studentId;
+    private String name;
+    private String[] favoriteShows;
 
     // Empty constructor
     public MemberDTO() {
@@ -26,51 +24,35 @@ public class MemberDTO {
 
     // Constructor with a Member object
     public MemberDTO(Member member) {
-        this.id = member.getId();
-        this.age = member.getAge();
-        this.firstName = member.getFirstName();
-        this.lastName = member.getLastName();
+        this.studentId = member.getStudentId();
+        this.name = member.getName();
+        this.favoriteShows = member.getFavoriteShows();
     }
 
     // Getters and setters
-    public Long getId() {
-        return id;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
-    public int getAge() {
-        return age;
+    public String getName() {
+        return name;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String[] getFavoriteShows() {
+        return favoriteShows;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFavoriteShows(String[] favoriteShows) {
+        this.favoriteShows = favoriteShows;
     }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEducaton() {
-        return educaton;
-    }
-
-    public void setEducaton(String educaton) {
-        this.educaton = educaton;
-    }
+    
 
 }

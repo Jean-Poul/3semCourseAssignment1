@@ -26,7 +26,7 @@ public class MemberResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static Member r1, r2;
+    private static Member m1, m2, m3, m4, m5;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -63,13 +63,19 @@ public class MemberResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        r1 = new Member(1, "firstName", "lastName", "education");
-        r2 = new Member(2, "firstNamee", "lastNamee", "educationn");
+        m1 = new Member(30, "cph-ml616", "Mick Larsen", new String[]{"The Wire", "Silicon Valley", "Supernatural"}, "Java");
+        m2 = new Member(27, "cph-as509", "Alexander Pihl", new String[]{"Power", "Ray Donovan", "Ozark"}, "Java");
+        m3 = new Member(35, "cph-jl360", "Jean-Poul Leth-Møller", new String[]{"Big Bang Theory", "Star trek", "Game of Thrones"}, "Java");
+        m4 = new Member(50, "cph-pk171", "Per Kringelbach", new String[]{"Stranger Things", "The expanse", "Mash"}, "Java");
+        m5 = new Member(30, "cph-mr462", "Morten Rasmussen", new String[]{"Stripper kongens piger", "Bang bros", "Fake Taxi"}, "Java");
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Member.deleteAllRows").executeUpdate();
-            em.persist(r1);
-            em.persist(r2);
+            em.persist(m1);
+            em.persist(m2);
+            em.persist(m3);
+            em.persist(m4);
+            em.persist(m5);
             em.getTransaction().commit();
         } finally {
             em.close();
