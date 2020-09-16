@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import utils.EMF_Creator;
 
 /**
  * 
@@ -46,6 +47,22 @@ public class MemberFacade {
             em.close();
         }
         
+    }
+    
+    public static void main(String[] args) {
+        //Create emf pointing to the dev-database
+        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
+        
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.createQuery("DELETE from Member").executeUpdate();
+            em.persist(new Member(1, "firstName", "lastName", "education"));
+            em.persist(new Member(2, "firstNamee", "lastNamee", "educationn"));
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
 }
