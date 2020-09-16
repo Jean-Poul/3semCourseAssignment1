@@ -17,7 +17,10 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.not;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +35,7 @@ public class CarResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static Car r1, r2;
+    private static Car m1, m2, m3, m4, m5, m6, m7, m8, m9, m10;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -64,18 +67,34 @@ public class CarResourceTest {
         httpServer.shutdownNow();
     }
 
-    // Setup the DataBase (used by the test-server and this test) in a known state BEFORE EACH TEST
-    //TODO -- Make sure to change the EntityClass used below to use YOUR OWN (renamed) Entity class
+    // Setup the DataBase in a known state BEFORE EACH TEST
+    //TODO -- Make sure to change the script below to use YOUR OWN entity class
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        r1 = new Car(1999, "maker", "model", 999);
-        r2 = new Car(2000, "makerr", "model", 9999);
+        m1 = new Car(1990, "Ford", "Mustang", 25000);
+        m2 = new Car(1995, "Kia", "Rio", 3500);
+        m3 = new Car(2000, "Renault", "Megan RS", 30000);
+        m4 = new Car(2005, "Seat", "Leon", 7000);
+        m5 = new Car(2015, "Audi", "A3", 8500);
+        m6 = new Car(2020, "Audi", "A7", 10500);
+        m7 = new Car(2020, "Ford", "Focus", 5500);
+        m8 = new Car(2020, "Dacia", "Duster", 20000);
+        m9 = new Car(2020, "Ranault", "Talisman", 3000);
+        m10 = new Car(2020, "Seat", "Ibitza", 7500);
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Car.deleteAllRows").executeUpdate();
-            em.persist(r1);
-            em.persist(r2);
+            em.persist(m1);
+            em.persist(m2);
+            em.persist(m3);
+            em.persist(m4);
+            em.persist(m5);
+            em.persist(m6);
+            em.persist(m7);
+            em.persist(m8);
+            em.persist(m9);
+            em.persist(m10);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -88,17 +107,7 @@ public class CarResourceTest {
         given().when().get("/car").then().statusCode(200);
     }
 
-    //This test assumes the database contains two rows
-    @Test
-    public void testDummyMsg() throws Exception {
-        given()
-                .contentType("application/json")
-                .get("/car/").then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("msg", equalTo("Hello World"));
-    }
-
+    // Test for car count
     @Test
     public void testCount() throws Exception {
         given()
@@ -106,6 +115,49 @@ public class CarResourceTest {
                 .get("/car/count").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("count", equalTo(2));
+                .body("count", equalTo(10));
+    }
+
+    // Test for all cars
+    @Test
+    public void testGetAll() {
+        given()
+                .contentType("application/json")
+                .get("/car/all")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("model", hasItems("A7",
+                        "Rio",
+                        "Focus",
+                        "Mustang",
+                        "Talisman",
+                        "A3",
+                        "Ibitza",
+                        "Duster",
+                        "Megan RS",
+                        "Leon"));
+    }
+
+    // Test to see if studentId matches with cph-as509
+    @Test
+    public void testFindByMaker() {
+        given().
+                get("/car/" + m3.getMaker())
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("maker", hasItems("Renault"));
+    }
+
+    // Testing to see if a model does not contain a specific model
+    @Test
+    public void testFindByModelNotFound() {
+        given().
+                get("/car/Mustang")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("model", not(hasItem("Stinger")));
     }
 }
