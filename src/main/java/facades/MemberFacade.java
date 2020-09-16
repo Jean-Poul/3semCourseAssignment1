@@ -55,7 +55,7 @@ public class MemberFacade {
     // Get all groupmembers
     public List<MemberDTO> getAllMembers() {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Member> query = em.createQuery("SELECT m FROM Movie m", Member.class);
+        TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m", Member.class);
         List<Member> members = query.getResultList();
         List<MemberDTO> memberDTOs = new ArrayList();
         members.forEach((Member member) -> {

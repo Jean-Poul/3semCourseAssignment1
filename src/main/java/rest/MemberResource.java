@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
  * @author jplm
  */
 // Member REST endpoints
-@Path("member")
+@Path("groupmembers")
 public class MemberResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
@@ -41,10 +41,10 @@ public class MemberResource {
         return "{\"count\":" + count + "}";  //Done manually so no need for a DTO
     }
     
-//    @Path("all")
-//    @GET
-//    @Produces({MediaType.APPLICATION_JSON})
-//    public Response getAll() {
-//        return Response.ok().entity(GSON.toJson(FACADE.getAllMembers())).build();
-//    }
+    @Path("all")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAll() {
+        return Response.ok().entity(GSON.toJson(FACADE.getAllMembers())).build();
+    }
 }

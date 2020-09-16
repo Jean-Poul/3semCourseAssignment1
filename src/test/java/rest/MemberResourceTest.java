@@ -13,6 +13,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.Matchers.equalTo;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -85,27 +86,49 @@ public class MemberResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/member").then().statusCode(200);
+        given().
+                when()
+                .get("/groupmembers")
+                .then()
+                .statusCode(200);
     }
 
     //This test assumes the database contains two rows
-    @Test
-    public void testDummyMsg() throws Exception {
-        given()
-                .contentType("application/json")
-                .get("/member/").then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("msg", equalTo("Hello World"));
-    }
+//    @Test
+//    public void testDummyMsg() throws Exception {
+//        given()
+//                .contentType("application/json")
+//                .get("/member/").then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("msg", equalTo("Hello World"));
+//    }
 
+    // Test for groupmember count
     @Test
     public void testCount() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/member/count").then()
+                .get("/groupmembers/count").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("count", equalTo(2));
+                .body("count", equalTo(5));
+    }
+
+    // Test for all groupmembers
+    @Test
+    public void testGetAll() {
+
+        given()
+                .contentType("application/json")
+                .get("/groupmembers/all")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("name", hasItems("Mick Larsen",
+                        "Alexander Pihl",
+                        "Jean-Poul Leth-Møller",
+                        "Per Kringelbach",
+                        "Morten Rasmussen"));
     }
 }
