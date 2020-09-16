@@ -119,5 +119,4 @@ public class CarFacadeTest {
         List<CarDTO> car = facade.getCarsByMaker(m2.getMaker());
         assertEquals("Rio", car.get(0).getModel());
     }
-
 }

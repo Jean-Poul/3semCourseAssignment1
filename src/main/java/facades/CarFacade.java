@@ -55,7 +55,6 @@ public class CarFacade {
         } finally {
             em.close();
         }
-
     }
 
     // Get all cars
@@ -83,7 +82,7 @@ public class CarFacade {
         return carDTOs;
     }
 
-    // Get cars by maker
+    // Get cars by year
     public List<CarDTO> getCarsByYear(int year) {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Car> query = em.createQuery("SELECT m FROM Car m WHERE m.year LIKE :year", Car.class);
@@ -120,5 +119,4 @@ public class CarFacade {
             em.close();
         }
     }
-
 }

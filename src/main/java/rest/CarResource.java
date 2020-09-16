@@ -59,11 +59,10 @@ public class CarResource {
     }
 
     // maker REST endpoint
-    @Path("y/{year}")
+    @Path("year/{year}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getCarsByYear(@PathParam("year") int year) {
         return Response.ok().entity(GSON.toJson(FACADE.getCarsByYear(year))).build();
     }
-
 }
