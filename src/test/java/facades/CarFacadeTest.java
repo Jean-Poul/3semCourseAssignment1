@@ -106,12 +106,12 @@ public class CarFacadeTest {
         assertEquals("Ford", car.get(1).getMaker());
     }
 
-//    //  Testing to see if a List with CarDTO has a car with maker Ford
-//    @Test
-//    public void testGetCarsByYear() {
-//        List<CarDTO> car = facade.getCarsByYear(m5.getYear());
-//        assertEquals(2015, car.get(1).getYear());
-//    }
+    //  Testing to see if a List with CarDTO has a car with maker Ford
+    @Test
+    public void testGetCarsByYear() {
+        List<CarDTO> car = facade.getCarsByYear(m5.getYear());
+        assertEquals(2015, car.get(0).getYear());
+    }
 
     // Testing to see if the car model array contains Rio
     @Test

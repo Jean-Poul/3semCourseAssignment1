@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import utils.EMF_Creator;
 
@@ -85,8 +86,8 @@ public class CarFacade {
     // Get cars by year
     public List<CarDTO> getCarsByYear(int year) {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Car> query = em.createQuery("SELECT m FROM Car m WHERE m.year LIKE :year", Car.class);
-        query.setParameter("year", "%" + year + "%");
+        Query query = em.createQuery("SELECT m FROM Car m WHERE m.year = :year");
+        query.setParameter("year", year);
         List<Car> cars = query.getResultList();
         List<CarDTO> carDTOs = new ArrayList();
         cars.forEach((Car car) -> {
