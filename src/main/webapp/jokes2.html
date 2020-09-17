@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="styles.css" rel="stylesheet" type="text/css"/>        
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">HOME</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Links section
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="whodidwhat.html">Who did what?</a>
+                            <a class="dropdown-item" href="groupcontract.html">Group contract</a>
+                            <a class="dropdown-item" href="jokes2.html">Cool jokes API</a>
+                            <a class="dropdown-item" href="carsforsale.html">Cars for sale</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://github.com/Jean-Poul/3semCourseAssignment1">Github Repo &#8599</a>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </nav>  
+
+        <section class="jokes">
+
+            <div>
+                <h1>Cool jokes API</h1>
+
+                <div class="row mt-5">
+                    <div class="mx-auto">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Find a joke by ID">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button" id="button-addon2">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="mx-auto">
+                        <button class="btn btn-secondary" type="button" id="button-addon2">Get a random joke</button>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="mx-auto">
+                        <button class="btn btn-secondary" type="button" id="button-addon2">Get all the jokes&nbsp;&nbsp;&nbsp;</button>
+                    </div>
+                </div>
+
+                <div class="joke-field">
+                    <p>Guess where the jokes go?</p>
+                </div>
+                
+        </section>
+        <script src="script/script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    </body>
+</html>
