@@ -49,11 +49,19 @@ public class JokeResource {
         return Response.ok().entity(GSON.toJson(FACADE.getAllJokes())).build();
     }
 
-    // id REST endpoint
+    // Id REST endpoint
     @Path("/{id}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getById(@PathParam("id") long id) {
         return Response.ok().entity(GSON.toJson(FACADE.getJokeById(id))).build();
+    }
+    
+    // Random REST endpoint
+    @Path("random")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getRandom() {
+        return Response.ok().entity(GSON.toJson(FACADE.getRandomJokes())).build();
     }
 }

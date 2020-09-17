@@ -11,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utils.EMF_Creator;
 
@@ -41,6 +42,7 @@ public class JokeFacadeTest {
     }
 
     // Setup the DataBase in a known state BEFORE EACH TEST
+    @BeforeEach
      public void setUp() {
         EntityManager em = emf.createEntityManager();
         m1 = new Joke("When Chuck Norris gets fast food, his order is ready before he walks in.", "https://api.chucknorris.io/", "Chuck Norris");
@@ -63,29 +65,22 @@ public class JokeFacadeTest {
 //        Remove any data after each test was run
     }
 
-//    @Test
-//    public void testAFacadeMethod() {
-//        assertEquals(3, facade.getCount(), "Expects tree rows in the database");
-//    }
-//    
-//    // Testing to see if all jokes has been insertet to the database
-//    @Test
-//    public void testGetAllJokes() {
-//        List<JokeDTO> joke = facade.getAllJokes();
-//        assertThat(joke, hasSize(3));
-//    }
-//
-//    //  Testing to see if a List with JokeDTO has a joke with Id 2
-//    @Test
-//    public void testGetJokeById() {
-//        JokeDTO joke = facade.getJokeById(m2.getId());
-//        assertEquals("2", joke.getId());
-//    }
-//    
-//    // Testing to see if joke id 3 contains the right joke
-//    @Test
-//    public void getJokeByJoke() {
-//        JokeDTO joke = facade.getJokeById(m3.getId());
-//        assertEquals("Chuck Norris can whistle in sign language.", joke.getJoke());
-//    }
+    @Test
+    public void testJokeCount() {
+        assertEquals(3, facade.getCount(), "Expects tree rows in the database");
+    }
+    
+    // Testing to see if all jokes has been insertet to the database
+    @Test
+    public void testGetAllJokes() {
+        List<JokeDTO> joke = facade.getAllJokes();
+        assertThat(joke, hasSize(3));
+    }
+
+    //  Testing to see if a List with JokeDTO has a joke with Id 2
+    @Test
+    public void testGetJokeById() {
+        JokeDTO joke = facade.getJokeById(m2.getId());
+        assertEquals("Chuck Norris doesnt have to shave, his beard shaves itself.", joke.getJoke());
+    }
 }

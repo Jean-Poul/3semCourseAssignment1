@@ -130,25 +130,26 @@ public class JokeResourceTest {
                         "Chuck Norris can whistle in sign language."));
     }
     
-//    // Test to see if id matches with joke
-//    @Test
-//    public void testFindById() {
-//        given().
-//                get("/joke/" + m2.getId())
-//                .then()
-//                .assertThat()
-//                .statusCode(HttpStatus.OK_200.getStatusCode())
-//                .body("id", hasItem(m2.getId()));
-//    }
-//    
-//    // Testing to see if a id does not contain a specific id
-//    @Test
-//    public void testFindByIdNotFound() {
-//        given().
-//                get("/joke/" + m1.getJoke())
-//                .then()
-//                .assertThat()
-//                .statusCode(HttpStatus.OK_200.getStatusCode())
-//                .body("id", not(hasItem(4)));
-//    }
+    // Test to see if id matches with joke
+    @Test
+    public void testFindById() {
+        int expected = Math.toIntExact(m2.getId());
+        given().
+                get("/joke/" + m2.getId())
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("id", equalTo(expected));
+    }
+    
+    // Testing to see if a id does not contain a specific id
+    @Test
+    public void testFindByIdNotFound() {
+        given().
+                get("/joke/" + m1.getId())
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("id", not(hasItem(m2.getId())));
+    }
 }
