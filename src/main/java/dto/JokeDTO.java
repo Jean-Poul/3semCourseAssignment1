@@ -16,8 +16,6 @@ public class JokeDTO {
     // Private variables
     private Long id;
     private String joke;
-    private String reference;
-    private String type;
 
     // Empty constructor
     public JokeDTO() {
@@ -27,8 +25,6 @@ public class JokeDTO {
     public JokeDTO(Joke joke) {
         this.id = joke.getId();
         this.joke = joke.getJoke();
-        this.reference = joke.getReference();
-        this.type = joke.getType();
     }
 
     // Getters and setters
@@ -46,22 +42,6 @@ public class JokeDTO {
 
     public void setJoke(String joke) {
         this.joke = joke;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
 }
