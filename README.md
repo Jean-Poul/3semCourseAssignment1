@@ -30,7 +30,84 @@
 - index.html design setup.
 - README file setup.
 ### **Wensday**
+- Member assignment:
+  - Members part of the assignment was worked on by implementing:
+      - getCount()
+      - getAllMembers()
+      - getStudentId(String studentId)
+  - Main method was also createt for putting data in the database.
+  - implementing proper rest endpoints.
+    - @Path("count")
+    - @Path("all")
+    - @Path("/{studentId}")
+  - Suitable test for both facade and rest endpoint to make sure everything was working before being pushed to master branch.
+    - MemberResource.java
+      - testMemberCount()
+      - testGetAllMembers()
+      - testGetMemberById()
+      - testMemberHasFavoriteShow()
+      - getMemberByName()
+    - MemberResourceTest.java
+        - testGetAll()
+        - testFindByStudentId()
+        - testFindByTitleNotFound()
+    - FacadeTest also including main method for putting data in test databases.
+  - JavaScript for Members part of the assignment also done. 
+-  Car assignment:
+    - Car part of the assignment was also worked on by implementing:
+      - getCount()
+      - getAllCars()
+      - getCarsByMaker(String maker)
+      - getCarsByYear(int year)
+    - Main method was also createt for putting data in the database.
+    - implementing proper rest endpoints.
+      - @Path("count")
+      - @Path("all")
+      - @Path("/{maker}")
+      - @Path("year/{year}")
+     - Suitable test for both facade and rest endpoint to make sure everything was working before being pushed to master branch.
+       - CarFacadeTest.java
+         - testCarsCount()
+         - testGetAllMembers()
+         - testGetCarsByMaker()
+         - testGetCarsByYear()
+         - testCarModelByName()
+       - CarResourceTest.java
+         - testCount()
+         - testGetAll()
+         - testFindByMaker()
+         - testFindByModelNotFound()
+       - FacadeTest also including main method for putting data in test databases.
+- All frontend setup also done and is now ready to be connected with backend.
+
 ### **Thursday**
+-  Jokes assignment:
+    - Jokes part of the assignment was also worked on by implementing:
+      - getCount()
+      - getAllJokes()
+      - getJokeById(long id)
+      - getRandomJokes()
+    - Main method was also createt for putting data in the database.
+    - implementing proper rest endpoints.
+      - @Path("count")
+      - @Path("all")
+      - @Path("/{id}")
+      - @Path("random")
+     - Suitable test for both facade and rest endpoint to make sure everything was working before being pushed to master branch.
+       - JokeFacadeTest.java
+         - testJokeCount()
+         - testGetAllJokes()
+         - testGetJokeById()
+         - testRandomJoke()
+       - JokeResourceTest.java
+         - testCount()
+         - testGetAll()
+         - testFindById()
+         - testFindByIdNotFound()
+         - testGetRandomJoke()
+       - FacadeTest also including main method for putting data in test databases.
+     - JavaScript for jokes part of the assignment also done. 
+- Frontend is in working process of being connected to backend part of the Course Assignment 1. 
 ### **Friday**
 
 
