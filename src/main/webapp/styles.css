@@ -8,7 +8,7 @@
 body{
     font-family: 'PT Sans', sans-serif;
     background-color: #000;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.95),rgba(0, 0, 0, 0.95)), url('img/bgcode.jpg');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/bgcode.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: repeat-y;        
