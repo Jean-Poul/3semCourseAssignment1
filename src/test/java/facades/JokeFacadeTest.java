@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import static org.hamcrest.MatcherAssert.assertThat;
+import org.hamcrest.Matchers;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -65,6 +67,7 @@ public class JokeFacadeTest {
 //        Remove any data after each test was run
     }
 
+    // Testing to see if Joke contains tree records
     @Test
     public void testJokeCount() {
         assertEquals(3, facade.getCount(), "Expects tree rows in the database");
@@ -82,5 +85,14 @@ public class JokeFacadeTest {
     public void testGetJokeById() {
         JokeDTO joke = facade.getJokeById(m2.getId());
         assertEquals("Chuck Norris doesnt have to shave, his beard shaves itself.", joke.getJoke());
+    }
+    
+    // Testing for random joke
+    @Test
+    public void testRandomJoke() {
+        JokeDTO joke = facade.getRandomJokes();
+        assertThat(joke.getJoke(), Matchers.anyOf(equalTo("When Chuck Norris gets fast food, his order is ready before he walks in."), 
+                        equalTo("Chuck Norris doesnt have to shave, his beard shaves itself."), 
+                        equalTo("Chuck Norris can whistle in sign language.")));
     }
 }

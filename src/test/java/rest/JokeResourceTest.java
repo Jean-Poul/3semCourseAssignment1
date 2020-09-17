@@ -18,6 +18,7 @@ import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.not;
@@ -151,5 +152,20 @@ public class JokeResourceTest {
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("id", not(hasItem(m2.getId())));
+    }
+    
+    // Test for random jokes
+    @Test
+    public void testGetRandomJoke() {
+
+        given()
+                .contentType("application/json")
+                .get("/joke/random")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("joke", anyOf(equalTo("When Chuck Norris gets fast food, his order is ready before he walks in."), 
+                        equalTo("Chuck Norris doesnt have to shave, his beard shaves itself."), 
+                        equalTo("Chuck Norris can whistle in sign language.")));
     }
 }
