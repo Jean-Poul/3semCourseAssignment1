@@ -78,10 +78,11 @@ public class JokeFacade {
     // Get random joke
     public JokeDTO getRandomJokes() {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Joke> query = em.createQuery("SELECT j FROM joke j ORDER BY RAND()", Joke.class);
+        TypedQuery<Joke> query = em.createQuery("SELECT j FROM Joke j ORDER BY function('RAND')", Joke.class);
         query.setMaxResults(1);
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Joke result = query.getSingleResult();
+        JokeDTO jokeDTO = new JokeDTO(result);
+        return jokeDTO;
     }
 
     // Inserting to database
