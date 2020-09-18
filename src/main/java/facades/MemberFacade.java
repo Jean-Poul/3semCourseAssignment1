@@ -90,7 +90,7 @@ public class MemberFacade {
             em.persist(new Member(27, "cph-as509", "Alexander Pihl", new String[]{"Power", "Ray Donovan", "Ozark"}, "Java"));
             em.persist(new Member(35, "cph-jl360", "Jean-Poul Leth-Møller", new String[]{"Big Bang Theory", "Star trek", "Game of Thrones"}, "Java"));
             em.persist(new Member(50, "cph-pk171", "Per Kringelbach", new String[]{"Stranger Things", "The expanse", "Mash"}, "Java"));
-            em.persist(new Member(30, "cph-mr462", "Morten Rasmussen", new String[]{"Stripper kongens piger", "Bang bros", "Fake Taxi"}, "Java"));
+            em.persist(new Member(30, "cph-mr462", "Morten Rasmussen", new String[]{"Stripper Kongens Piger", "Bang bros", "Fake Taxi"}, "Java"));
             em.getTransaction().commit();
         } finally {
             em.close();
