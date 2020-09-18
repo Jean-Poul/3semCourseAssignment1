@@ -1,175 +1,76 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>Dynamic UI manipulation using data obtained via fetch</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
-              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <title>Cool Chuck Norris API</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="styles.css" rel="stylesheet" type="text/css"/>        
     </head>
     <body>
-        <div class="container">
 
-            <div><input type="button" id="random" value="Random joke"> (press "r" to refresh)</div>
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">HOME</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Links section
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="whodidwhat.html">Who did what?</a>
+                            <a class="dropdown-item" href="groupcontract.html">Group contract</a>
+                            <a class="dropdown-item" href="jokes2.html">Cool jokes API</a>
+                            <a class="dropdown-item" href="jokes.html">Cool Chuck Norris API</a>
+                            <a class="dropdown-item" href="carsforsale.html">Cars for sale</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://github.com/Jean-Poul/3semCourseAssignment1">Github Repo &#8599</a>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </nav>  
 
-            <div><select id="categories"></select></div>
+        <section class="jokes">
 
-            <div id="joke"></div>
+            <div>
+                <h1>Cool Chuck Norris API</h1>
 
-            <input type="text" id="searchjoke" name="searshjoke">
-            <input type="button" id="getjoke" value="Search joke">
+                <div class="row mt-2">
+                    <div class="mx-auto"> 
+                        <p class="font-italic"><small id="message"></small></p>
+                        <div class="input-group mb-3">                        
+                            <input type="text" class="form-control" placeholder="Search after joke" id="searchTxt">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button" id="searchBtn">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mx-auto"><p>(press "r" to refresh)</p>
+                        <button class="btn btn-secondary" type="button" id="random">Get a random joke</button> 
+                    </div>
+                </div>
 
-            <p id="message"></p>
-
-            <table class="table" id="searchresult"></table>
-        </div>
-        <script>
-
-            let random = document.getElementById("random");
-            let categories = document.getElementById("categories");
-            let getjoke = document.getElementById("getjoke");
-            let url = "https://api.chucknorris.io/jokes/";
-
-
-            let newcaturl = url + "categories";
-
-            // fetch all categories for selectbox
-            fetch(newcaturl)
-                    .then(res => res.json()) //in flow1, just do it
-                    .then(data => {
-
-                        var randombycat = "<option selected disabled>Random joke from category</option>";
-                        for (var i = 0; i < data.length; i++) {
-                            randombycat += "<option value=" + data[i] + ">" + data[i] + "</option>";
-                        }
-
-                        document.getElementById("categories").innerHTML = randombycat;
-
-                        //console.log("data", data);
-
-                    });
-
-
-            // fetch a random joke
-            random.onclick = function (e) {
-                e.preventDefault();
-
-                let newurl = url + "random";
-                document.getElementById("categories").selectedIndex = 0; // reset selectbox
-                document.getElementById("searchresult").innerHTML = ""; // reset search result div
-                document.getElementById("message").innerHTML = ""; // reset message
-
-                fetch(newurl)
-                        .then(res => res.json()) //in flow1, just do it
-                        .then(data => {
-
-                            document.getElementById("joke").innerHTML = "<div><img src=" + data.icon_url + " alt=\"chuck norris avatar\"> Random joke</div><p>" +
-                                    data.value + "</p>";
-
-                            //console.log("data", data);
-
-                        });
-            };
-
-
-            // fetch random joke from category
-            categories.onchange = function (e) {
-                e.preventDefault();
-
-                let catvalue = document.getElementById("categories").value;
-                let newurl = url + "random?category=" + catvalue;
-
-                if (catvalue !== "Random joke from category") {
-                    document.getElementById("searchresult").innerHTML = ""; // reset search result div
-                    document.getElementById("message").innerHTML = ""; // reset message
-
-                    fetch(newurl)
-                            .then(res => res.json()) //in flow1, just do it
-                            .then(data => {
-
-                                document.getElementById("joke").innerHTML = "<div><img src=" + data.icon_url +
-                                        " alt=\"chuck norris avatar\"> Random joke from category " + data.categories + "</div><p>" +
-                                        data.value + "</p>";
-
-                                //console.log("data", data);
-
-                            });
-
-                    console.log(catvalue);
-                }
-            };
-
-
-            // fetch random joke by keypress 'r' on keybord
-            document.body.onkeydown = function (evt) {
-                evt = evt || window.event;
-                var target = evt.target || evt.srcElement;
-                var targetTagName = (target.nodeType === 1) ? target.nodeName.toUpperCase() : "";
-                if (!/INPUT|TEXTAREA/.test(targetTagName)) {
-                    if (evt.keyCode === 82) {
-                        document.getElementById("searchresult").innerHTML = ""; // reset search result div
-                        document.getElementById("message").innerHTML = ""; // reset message
-
-                        let newurl = url + "random";
-
-                        fetch(newurl)
-                                .then(res => res.json()) //in flow1, just do it
-                                .then(data => {
-
-                                    document.getElementById("joke").innerHTML = "<div><img src=" + data.icon_url + " alt=\"chuck norris avatar\"> Random joke</div><p>" +
-                                            data.value + "</p>";
-
-                                    document.getElementById("categories").selectedIndex = 0; // reset selectbox
-
-                                });
-                        //console.log("data", data);
-                        //console.log(String.fromCharCode(e.keyCode) + " --> " + e.keyCode);
-                    }
-                }
-            };
-
-            // fetch joke by search
-            getjoke.onclick = function (e) {
-                e.preventDefault();
-
-                let searchjoke = document.getElementById("searchjoke").value;
-
-                if (searchjoke.length < 3 || searchjoke.legth > 120) {
-                    document.getElementById("message").innerHTML = "Has to be between 3 and 120 letters";
-                } else if (!isNaN(searchjoke) && searchjoke.length > 1) {
-                    document.getElementById("message").innerHTML = "You need more than numbers";
-                } else {
-                    let newurl = url + "search?query=" + searchjoke;
-                    document.getElementById("categories").selectedIndex = 0; // reset selectbox
-                    document.getElementById("joke").innerHTML = ""; // reset joke div
-                    document.getElementById("message").innerHTML = ""; // reset message
-
-                    fetch(newurl)
-                            .then(res => res.json()) //in flow1, just do it
-                            .then(data => {
-
-                                var searchresult = "<thead><tr><th><div><img src=" + data.result[0].icon_url + " alt=\"chuck norris avatar\"></th><th>" + data.total + " jokes containing the word " + searchjoke + "</th></thead><tbody>";
-                                for (var i = 0; i < data.result.length; i++) {
-                                    var count = i + 1;
-                                    searchresult += "<tr><td>" + count + "</td><td>" + data.result[i].value + "</td></tr>";
-                                }
-                                searchresult += "</tbody>";
-
-                                document.getElementById("searchresult").innerHTML = searchresult;
-
-
-                                console.log("data", data);
-
-                            });
-                }
-            };
-
-        </script>
+                <div class="row mt-3">
+                    <div class="mx-auto">
+                        <select class="form-control" id="categories"></select>
+                    </div>
+                </div>
+               
+                <div class="joke-field">
+                    <span id="joke"></span>
+                </div>
+            </div>
+        </section>
+       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+        <script src="script/chucknorris.js" type="text/javascript"></script>
     </body>
 </html>
 
