@@ -109,6 +109,13 @@
      - JavaScript for jokes part of the assignment also done. 
 - Frontend is in working process of being connected to backend part of the Course Assignment 1. 
 ### **Friday**
-
-
+- Member assignment.
+  - Member part of the assignment is now fully implementet with JavaScript for the frontend. 
+- Car assignment.
+  - Car part of the assignment is now fully implementet with JavaScript for the frontend.
+- Joke assignment.
+  - Joke part of the assignment is now fully implementet with JavaScript for the frontend.
+  - Joke has two parts both implementet with JavaScript for the frontend.
+    - jokes.html - which fetches from https://api.chucknorris.io and is therefor our external fetching. 
+    - jokes2.html - which fetches from our own database with which is filled with jokes and is therefor our internal fetching.
 
