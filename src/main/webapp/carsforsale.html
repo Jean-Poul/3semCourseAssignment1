@@ -186,8 +186,9 @@
             priceBelow.onclick = function () {
 
                 let carInputField = document.getElementById("carInputField").value;
-                if (isNaN(carInputField)) {
+                if (isNaN(carInputField) || carInputField === "" || carInputField === null) {
                     document.getElementById("errorMessage").innerHTML = "Please enter a valid price";
+                    document.getElementById("carTable").innerHTML = "<thead> <tr><th>ID</th><th>Make</th> <th>Model</th> <th>Year</th><th>Price</th></thead><tbody></tbody>";
                 } else {
                     let newUrl = url + "all";
                     fetch(newUrl)
@@ -195,11 +196,19 @@
                             .then(data => {
                                 document.getElementById("errorMessage").innerHTML = "";
                                 var carsFiltered = data.filter(data => data.price < carInputField);
+                                console.log("Hi");
+                                if (!carsFiltered.length) {
+                                    document.getElementById("errorMessage").innerHTML = "No results found";
+                                    document.getElementById("carTable").innerHTML = "<thead> <tr><th>ID</th><th>Make</th> <th>Model</th> <th>Year</th><th>Price</th></thead><tbody></tbody>";
+                                } else {
+                                    carsToHtmlTable = "<thead> <tr><th>ID</th><th>Make</th> <th>Model</th> <th>Year</th><th>Price</th></thead><tbody>" + carsFiltered.map(function (car) {
+                                        return "<tr><td>" + car.id + "</td><td>" + car.maker + "</td><td>" + car.model + "</td><td>" + car.year + "</td><td>" + car.price + "</td></tr>";
+                                    }).join("") + "</tbody";
+                                    document.getElementById("carTable").innerHTML = carsToHtmlTable;
+                                }
 
-                                carsToHtmlTable = "<thead> <tr><th>ID</th><th>Make</th> <th>Model</th> <th>Year</th><th>Price</th></thead><tbody>" + carsFiltered.map(function (car) {
-                                    return "<tr><td>" + car.id + "</td><td>" + car.maker + "</td><td>" + car.model + "</td><td>" + car.year + "</td><td>" + car.price + "</td></tr>";
-                                }).join("") + "</tbody";
-                                document.getElementById("carTable").innerHTML = carsToHtmlTable;
+
+                                
                                 console.log("data", data);
                             });
                 }
