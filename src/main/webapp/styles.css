@@ -5,6 +5,7 @@
 */
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 
+
 body{
     font-family: 'PT Sans', sans-serif;
     background-color: #000;
@@ -14,6 +15,9 @@ body{
     background-repeat: repeat-y;        
 }
 
+/* 
+Custom style for the bootstrap drop-down menu
+*/
 .navbar-nav > li > .dropdown-menu{ 
     background-color: #212529; 
 }
@@ -22,6 +26,9 @@ body{
     color: #858585;  
 }
 
+/* 
+The "Main window" to ensure horisontally and vertically centered content.
+*/
 .hero {
     width: 100%;
     height: 100vh;
@@ -31,6 +38,9 @@ body{
     color: white;
 }
 
+/* 
+The "Main window" to ensure horisontally and vertically centered content.
+*/
 .jokes{
     margin-top: 5px !important;
     width: 100%;
@@ -41,6 +51,9 @@ body{
     color: white;
 }
 
+/*
+Handling the field in which jokes are rendered to the DOM
+*/
 .joke-field{
     width: 40vw;
     margin-top: 10%;
@@ -52,6 +65,9 @@ body{
     border-radius: 5px;
 }
 
+/* 
+The "Main window" to ensure horisontally and vertically centered content.
+*/
 .contract{
     font-size: 1.2em;
     text-align: left;
@@ -59,6 +75,9 @@ body{
     padding: -56px; /*Subtracting bootstrap navbar height*/
 }
 
+/* 
+The "Main window" to ensure horisontally and vertically centered content.
+*/
 .cars{
     margin-top: 70px !important;
     width: 80%;
@@ -70,6 +89,9 @@ body{
     color: white;
 }
 
+/* 
+Workaround to remove bullets from ul/li list and replacing them with "paragraph/section sign: §
+*/
 .contract ol{
     list-style: none;
 }
@@ -140,6 +162,10 @@ body{
 .arrow-down {
     font-size: 5em;
 }
+
+/* 
+Animated frontpage arrow (Currently removed due to responive issues)
+*/
 
 @-webkit-keyframes action {
     0% { transform: translateY(0); }
