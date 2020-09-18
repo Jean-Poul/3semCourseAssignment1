@@ -35,33 +35,15 @@
             <div class="hero-inner">
                 <h1>HOLD E, Gruppe 8</h1>
                 <h2>DAT3SEM, 2020</h2>
-                <table class="table table-striped table-dark mt-5 member-table">
-                    <thead>
-                        <tr>
-                            <th class="t-col t-col-1">Student ID</th>
-                            <th class="t-col t-col-2">Name</th>
-                            <th class="t-col t-col-3">Favorite TV-Series</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td class="left-col">Navn Navnesen</td>
-                            <td class="left-col">Huset på Christianshavn</td>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td class="left-col">Navn Navnesen</td>
-                            <td class="left-col">Huset på Christianshavn</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td class="left-col">Navn Navnesen</td>
-                            <td class="left-col">Huset på Christianshavn</td>
-                        </tr>
-                    </tbody>
-                </table>                            
-                <a href="#" class="btn">Reload Names</a>
+                
+                <button class="btn btn-primary" id="getAllMembers">Get all group members</button>
+                
+                <table class="table table-striped table-dark mt-5 member-table" id="userTable">
+                    
+                </table> 
+                
+               <!-- <a href="#" class="btn">Reload Names</a>-->
+                
                 <div class="hero-bottom">
                     <p class="text-white">But wait! There's more!</p>
                     <span class="arrow-down">&darr;</span>
@@ -124,6 +106,8 @@
                 </div>
             </div>            
         </div>
+        
+        
         <script src="script/script.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
