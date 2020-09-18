@@ -1,8 +1,10 @@
 
-
+// Global variables
 var url = "api/groupmembers/";
 var getAllMembers = document.getElementById("getAllMembers");
 
+
+// All members function (building table)
 getAllMembers.onclick = function () {
 
     let newUrl = url + "all";
