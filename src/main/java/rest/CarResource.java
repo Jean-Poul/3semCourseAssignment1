@@ -32,7 +32,8 @@ public class CarResource {
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
-
+    
+    // count REST endpoint
     @Path("count")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
@@ -58,7 +59,7 @@ public class CarResource {
         return Response.ok().entity(GSON.toJson(FACADE.getCarsByMaker(maker))).build();
     }
 
-    // maker REST endpoint
+    // year REST endpoint
     @Path("year/{year}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
