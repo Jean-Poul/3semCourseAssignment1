@@ -1,10 +1,10 @@
 # [Course Assignment 1](https://docs.google.com/document/d/1XT94iw0TpKjK2c1hXhCj8wPPOwogTVME0hsONbEf4F4/edit)  
  [![Build Status](https://travis-ci.org/Jean-Poul/3semCourseAssignment1.svg?branch=master)](https://travis-ci.org/Jean-Poul/3semCourseAssignment1)
   
-##### Project was deployed on droplet below here: [micklarsen.com/CA1](https://micklarsen.com/CA1/)
+##### Project was deployed on this droplet: [micklarsen.com/CA1](https://micklarsen.com/CA1/)
   
 ## Members of Class E, Group 8:
-  ##### Jean-Poul Wilhelm Luplau Leth-Møller [Github](https://github.com/AlexanderPihl)
+  ##### Jean-Poul Wilhelm Luplau Leth-Møller [Github](https://github.com/Jean-Poul)
   ##### Morten Rahbek Rasmussen [GitHub](https://github.com/Amazingh0rse)
   ##### Mick Kristian Strellner Larsen [GitHub](https://github.com/MivleDK)
   ##### Per Kringelbach [Github](https://github.com/cph-pk)
