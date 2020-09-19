@@ -45,7 +45,8 @@ searchYear.onclick = function () {
                         //Sets ifNull to id, to help with varying that data isn't empty
                         var ifNull = data[i].id;
                     }
-                    if (ifNull === null || ifNull === "" || ifNull === "undefined") {
+                    
+                    if (ifNull == null || ifNull == "" || ifNull == "undefined") { // only '==' and not '==='
                         document.getElementById("errorMessage").innerHTML = "No results found for that year";
                     }
                     result += "</tbody>";
@@ -75,7 +76,8 @@ searchMake.onclick = function () {
                         //Helps with validating if data is empty
                         var ifNull = data[i].id;
                     }
-                    if (ifNull === null || ifNull === "" || ifNull === "undefined") {
+                    
+                    if (ifNull == null || ifNull == "" || ifNull == "undefined") { // only '==' and not '==='
                         document.getElementById("errorMessage").innerHTML = "No results found";
                     }
                     result += "</tbody>";
