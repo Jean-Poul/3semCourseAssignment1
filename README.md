@@ -124,3 +124,9 @@
   - Joke has two parts both implemented with JavaScript for the frontend.
     - jokes.html - which fetches from https://api.chucknorris.io and is "External" fetching. 
     - jokes2.html - which fetches from our own database with which is filled with jokes and is our "Internal" fetching.
+
+### **Saturday**
+- Walkthrough of full assignment. Does everything still works as intented. 
+- Talking about if there's something we missed.
+- Final code touch up.
+- Planning for review on Monday. Who says what.
